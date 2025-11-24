@@ -101,7 +101,8 @@
 
 ---
 
-
+## 示例说明
+```json
 [
     {
         "craftRecipeID": 1,
