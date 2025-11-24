@@ -91,11 +91,12 @@
 
 ```text
 "itemQuantityAfterCraft": [-10.0, 0.0, 0.0]
+
 表示消耗材料 10 单位内容物。
 
 ---
 
-# AKM 配方 JSON 示例（示例用法说明）
+## AKM 配方 JSON 示例
 
 
 ```json
