@@ -79,6 +79,15 @@
 
 ---
 
+
+## 合成后材料变化说明
+
+```text
+"itemQuantityAfterCraft": [-10.0, 0.0, 0.0]
+该材料在合成后会 减少 10 单位内容物。
+
+---
+
 ## 所需材料（needIngredients）
 
 | 字段 | 类型 | 说明 |
@@ -93,14 +102,6 @@
 | `destroyItem` | integer | 合成后是否销毁材料 |
 
 ---
-
-## 合成后材料变化说明
-
-```text
-"itemQuantityAfterCraft": [-10.0, 0.0, 0.0]
-
----
-
 
 [
     {
