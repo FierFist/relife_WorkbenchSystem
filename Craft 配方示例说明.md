@@ -1,5 +1,10 @@
 # Craft 配方示例说明
 
+下面的示例展示了一个完整的合成配方结构，包括基本信息、结果产物、所需材料等内容。  
+你可以根据需要复制此示例并修改相应字段。
+
+---
+
 ## 配方基本参数
 
 | 字段 | 类型 | 说明 |
@@ -59,16 +64,18 @@
 |------|------|------|
 | `classname` | string | 结果物品类名 |
 | `resultTitle` | string | 显示名称（为空则用默认） |
-| `resultPreview` | string | 预览图（为空则使用 `classname`） |
-| `showResultAttachmentsInfo` | integer | 是否显示附件信息（1 = 是，0 = 否） |
-| `chance` | float | 权重概率（0 = 等权或全部生成） |
+| `resultPreview` | string | 预览图（为空则使用 classname） |
+| `showResultAttachmentsInfo` | integer | 是否显示附件信息 |
+| `chance` | float | 权重概率（0 = 全部生成；>0 = 按权重随机） |
+
+---
 
 ### 结果状态（health/count/quantity 等）
 
 - `"health": [1.0, -1, -1]` → 固定耐久 1.0  
 - `"count": [1, -1, -1]` → 固定数量 1  
 - `"quantity": [-1, -1, -1]` → 忽略数量  
-- `"attachmentList"` → 结果带有的附件（如弹匣）
+- `"attachmentList"` → 结果附带的附件（例如弹匣）
 
 ---
 
@@ -79,11 +86,11 @@
 | `isKindOf` | integer | 是否使用 isKindOf 检查 |
 | `itemClassname` | array[string] | 可用材料类名列表 |
 | `itemPreview` | string | 预览图（类名或图标） |
-| `itemCount` | integer | 需要的数量 |
-| `quantityAsCount` | integer | 是否按叠堆数量汇总 |
-| `itemQuantity` | float[] | 所需内容物数量（如 10 = 固定 10） |
-| `itemHealth` | integer | 最低耐久状态（0–4） |
-| `destroyItem` | integer | 是否在合成后销毁材料 |
+| `itemCount` | integer | 所需材料数量 |
+| `quantityAsCount` | integer | 是否按叠堆数量计算 |
+| `itemQuantity` | float[] | 内容物要求（如 10 = 固定 10） |
+| `itemHealth` | integer | 最低耐久等级（0–4） |
+| `destroyItem` | integer | 合成后是否销毁材料 |
 
 ---
 
@@ -92,12 +99,9 @@
 ```text
 "itemQuantityAfterCraft": [-10.0, 0.0, 0.0]
 
-表示消耗材料 10 单位内容物。
-
 ---
 
 
-## 配方 JSON 示例
 [
     {
         "craftRecipeID": 1,
@@ -127,6 +131,7 @@
         "needPerkToCraft": [],
         "needToChooseResult": 1,
         "showCraftWindowForResult": 1,
+
         "results": [
             {
                 "classname": "AKM",
@@ -141,6 +146,7 @@
                 "liquid": -1,
                 "foodStage": -1,
                 "cleanness": -1,
+
                 "attachmentList": [
                     {
                         "classname": "Mag_AKM_Drum75Rnd",
@@ -160,7 +166,9 @@
                 ]
             }
         ],
+
         "needAttachment": [],
+
         "needIngredients": [
             {
                 "isKindOf": 1,
@@ -187,5 +195,3 @@
         ]
     }
 ]
-
----
