@@ -95,3 +95,97 @@
 表示消耗材料 10 单位内容物。
 
 ---
+
+
+## 配方 JSON 示例
+[
+    {
+        "craftRecipeID": 1,
+        "categoryID": "",
+        "craftTitle": "AKM",
+        "craftDescription": "",
+        "resultPreview": "AKM",
+        "buttonCraftTitle": "",
+        "progressTitle": "",
+        "rarityColor": "0x75fa576a",
+        "craftMode": 0,
+        "craftTimeSec": 20,
+        "spawnOutsideWorkbench": 1,
+        "resultSpawnPosOffset": [0, 0, 0],
+        "resultSpawnPosition": [0, 0, 0],
+        "resultSpawnOrientation": [0, 0, 0],
+        "allowDecraft": 0,
+        "decraftNeedAttachments": 0,
+        "decraftNeedLearn": 0,
+        "decraftNeedPerk": 0,
+        "needToLearn": 0,
+        "deleteAfterLearn": 0,
+        "hideRecipeWithoutPerk": 0,
+        "requireAllPerksInList": 0,
+        "addPerkPointsSkillTypes": [],
+        "addPerkPointsValue": [],
+        "needPerkToCraft": [],
+        "needToChooseResult": 1,
+        "showCraftWindowForResult": 1,
+        "results": [
+            {
+                "classname": "AKM",
+                "resultTitle": "",
+                "resultPreview": "",
+                "showResultAttachmentsInfo": 1,
+                "chance": 0,
+                "health": [1, -1, -1],
+                "count": [1, -1, -1],
+                "quantity": [-1, -1, -1],
+                "energy": [-1, -1, -1],
+                "liquid": -1,
+                "foodStage": -1,
+                "cleanness": -1,
+                "attachmentList": [
+                    {
+                        "classname": "Mag_AKM_Drum75Rnd",
+                        "resultTitle": "",
+                        "resultPreview": "",
+                        "showResultAttachmentsInfo": 1,
+                        "chance": 0,
+                        "health": [1, -1, -1],
+                        "count": [1, -1, -1],
+                        "quantity": [5, -1, -1],
+                        "energy": [-1, -1, -1],
+                        "liquid": -1,
+                        "foodStage": -1,
+                        "cleanness": -1,
+                        "attachmentList": []
+                    }
+                ]
+            }
+        ],
+        "needAttachment": [],
+        "needIngredients": [
+            {
+                "isKindOf": 1,
+                "itemTitle": "",
+                "itemClassname": ["Apple"],
+                "itemPreview": "Apple",
+                "itemCount": 1,
+                "quantityAsCount": 1,
+                "itemQuantity": [10, -1],
+                "itemHealth": 3,
+                "itemEnergy": [-1, -1],
+                "itemFoodStage": [],
+                "itemCleanness": -1,
+                "itemLiquidType": -1,
+                "itemHaveEnergy": 0,
+                "destroyItem": 0,
+                "itemDamageAfterCraft": [0, 0, 0],
+                "itemQuantityAfterCraft": [-10, 0, 0],
+                "itemDecraftCount": 0,
+                "itemDecraftHealth": 0,
+                "itemQuantityEnergyDecreaseCoef": 0,
+                "itemDecraftFoodStage": 0
+            }
+        ]
+    }
+]
+
+---
