@@ -1,0 +1,164 @@
+# 合成系统配置文档
+
+## 配方基础参数
+
+| 参数 | 类型 | 描述 |
+|----------|-----|----------|
+| `craftRecipeID` | integer | 合成配方的唯一标识符 |
+| `categoryID` | string | 配方分类（例如，"Craft"） |
+| `craftTitle` | string | 界面中显示的配方名称 |
+| `craftDescription` | string | 配方描述 |
+| `resultPreview` | string | 结果预览图标（物品的 classname）。如果指定 classname，则配方预览将显示该物品模型；如果指定图标路径，则将显示图标。<br><img width="142" height="59" alt="image" src="https://github.com/user-attachments/assets/e09c9d1d-fe8b-466a-bf12-4c40552c1c83" /> <img width="143" height="59" alt="image" src="https://github.com/user-attachments/assets/4996c44a-0f5c-431f-92cb-8013166275c6" /> |
+| `buttonCraftTitle`      | `string` | 合成按钮上的文本。默认为"Создать предмет"（创建物品），但你可以指定任何其他文本。<br><img width="191" height="112" alt="image" src="https://github.com/user-attachments/assets/9ea6be84-4524-47a1-8eba-3a571f36ccdc" /> <img width="213" height="127" alt="image" src="https://github.com/user-attachments/assets/cc6383f5-3dd7-4f5e-beb8-7a7f6da8bbeb" /> |
+| `progressTitle`         | `string` | 合成过程中的进度文本。<br><img width="315" height="131" alt="image" src="https://github.com/user-attachments/assets/941286af-41ae-4fe8-a378-431de0257912" /> <img width="284" height="81" alt="image" src="https://github.com/user-attachments/assets/0c71f9bd-8a2e-4575-98fc-98145c37124b" /> |
+| `rarityColor` | string | 稀有度颜色，hex格式（例如，"0xFF43A047"） |
+| `craftMode` | integer | 合成模式 0 – 队列模式。1 – 直接模式 - 仅直接合成，无法加入队列 |
+| `craftTimeSec` | integer | 合成时间（秒） |
+
+## 结果放置参数
+
+| 参数 | 类型 | 描述 |
+|----------|-----|----------|
+| `spawnOutsideWorkbench` | bool | 在合成台外生成结果（0 - 否，1 - 是） |
+| `resultSpawnPosOffset` | array[float] | 结果生成位置的偏移量 [x, y, z] |
+| `resultSpawnPosition` | array[float] | 结果生成的绝对位置 [x, y, z] |
+| `resultSpawnOrientation` | array[float] | 结果生成时的朝向 [pitch, yaw, roll] |
+
+## 拆解参数
+
+| 参数 | 类型 | 描述 |
+|----------|-----|----------|
+| `allowDecraft` | bool | 允许拆解物品（0 - 否，1 - 是） |
+| `decraftNeedAttachments` | bool | 拆解是否需要配件（0 - 否，1 - 是） |
+| `decraftNeedLearn` | bool | 拆解是否需要学习配方（0 - 否，1 - 是） |
+| `decraftNeedPerk` | bool | 拆解是否需要技能（0 - 否，1 - 是） |
+
+| 参数 | 类型 | 描述 |
+|----------|-----|----------|
+| `needToLearn` | bool | 使用前是否需要通过手持结果物品来学习配方（0 - 否，1 - 是） |
+| `deleteAfterLearn` | bool | 学习后是否删除配方（0 - 否，1 - 是） |
+| `hideRecipeWithoutPerk` | bool | 没有必要技能时是否隐藏配方（0 - 否，1 - 是） |
+| `requireAllPerksInList` | bool | 需要列表中的所有技能（0 - 否，1 - 是） |
+| `needPerkToCraft` | array[integer] | 合成所需的技能ID数组 |
+| `needToChooseResult` | bool | 是否需要从多个选项中选取结果（0 - 否，1 - 是） |
+| `showCraftWindowForResult` | bool | 为已合成的物品显示弹出窗口（仅适用于只有一个结果，且不是通过队列而是直接合成的配方）（0 - 否，1 - 是） |
+
+## 经验和技能参数
+
+| 参数 | 类型 | 描述 |
+|----------|-----|----------|
+| `addPerkPointsSkillTypes` | array[string] | 增加经验点的技能类型（例如，"HUNTING"） |
+| `addPerkPointsValue` | array[float] | 向相应技能增加的经验点数量 |
+
+## 合成结果 (results)
+
+| 参数 | 类型 | 描述 |
+|----------|-----|----------|
+| `classname` | string | 结果物品的类名 |
+| `resultTitle` | string | 结果名称（如果为空，则使用标准名称） |
+| `resultPreview` | string | 结果预览（如果为空，则使用 classname） |
+| `showResultAttachmentsInfo` | integer | 显示结果配件信息（0 - 否，1 - 是） |
+| `chance` | float | 获得结果的概率。如果所有结果的 chance 都是 0，则所有结果都可能获得。如果至少有一个大于 0，则根据其权重选择一个结果，权重越大，机会越大，其余则不会获得。|
+
+### 结果状态参数
+
+| 参数 | 类型 | 描述 |
+|----------|-----|----------|
+| `health` | array[float] | 物品健康度百分比，从 0 到 1 [精确值，最小值，最大值]。如果第一个值是 -1，则在最小值和最大值之间随机取值。 |
+| `count` | array[integer] | 物品数量 [精确值，最小值，最大值]。如果第一个值是 -1，则在最小值和最大值之间随机取值。 |
+| `quantity` | array[float] | 内容的实际数量 [精确值，最小值，最大值]。如果第一个值是 -1，则在最小值和最大值之间随机取值。 |
+| `energy` | array[float] | 物品能量 [精确值，最小值，最大值]。如果第一个值是 -1，则在最小值和最大值之间随机取值。 |
+| `liquid` | integer | 液体类型（-1 或 0 = 无液体） |
+| `foodStage` | integer | 食物阶段（-1 = 忽略） |
+| `cleanness` | integer | 物品清洁度（-1 = 忽略） |
+
+## 所需配件 (needAttachment)
+
+| 参数 | 类型 | 描述 |
+|----------|-----|----------|
+| `isKindOf` | integer | 是否通过 isKindOf 检查类（0 - 精确匹配，1 - 继承关系） |
+| `attachType` | string | 所需配件的类名 |
+| `attachSlot` | string | 合成台上的配件槽位 |
+| `needElectricityOn` | bool | 是否需要通电（0 - 否，1 - 是） |
+| `hideRecipeIfMissing` | bool | 缺少配件时是否隐藏配方（0 - 否，1 - 是） |
+| `damageAfterCraft` | float | 合成后对配件造成的伤害（0.0 = 无伤害）。应为正值，模组会自动扣除。 |
+| `decreaseQuantityAfterCraft` | float | 合成后减少配件内容物的数量。数字应为正值，模组会自动扣除。|
+
+### 减少配件的参数
+
+| 参数 | 类型 | 描述 |
+|----------|-----|----------|
+| `decreaseAttachHealth` | object | 键值对对象，键为"类名"，值为要减少的健康度值 |
+| `decreaseAttachQuantity` | object | 键值对对象，键为"类名"，值为要减少的数量（例如，"RLF_GrinderDiskLeft": -50.0） |
+
+## 所需材料 (needIngredients)
+
+| 参数 | 类型 | 描述 |
+|----------|-----|----------|
+| `isKindOf` | integer | 是否通过 isKindOf 检查类（0 - 精确匹配，1 - 继承关系） |
+| `itemTitle` | string | 材料名称（如果为空，则使用标准名称） |
+| `itemClassname` | array[string] | 允许的材料类名数组 |
+| `itemPreview` | string | 用于显示材料预览的类名或图标路径|
+| `itemCount` | integer | 所需物品数量 |
+| `itemHealth` | integer | 物品要求的最低健康度（值不是百分比，而是健康度等级，见下方备忘） |
+| `destroyItem` | integer | 合成后是否销毁物品（0 - 否，1 - 是） |
+
+### 材料状态参数
+
+| 参数 | 类型 | 描述 |
+|----------|-----|----------|
+| `quantityAsCount` | bool | 如果启用，堆叠的物品将被视为数量。也就是说，你可以指定 12 块破布，它会汇总找到的所有破布。 |
+| `itemQuantity` | array[float] | 所需内容物数量 [最小值，最大值] |
+| `itemEnergy` | array[float] | 所需能量 [精确值，最小值，最大值]。如果第一个值是 -1，则使用最小值-最大值范围 |
+| `itemFoodStage` | array[integer] | 允许的食物阶段（空数组 = 任何阶段） |
+| `itemCleanness` | integer | 所需的清洁度（-1 = 忽略） |
+| `itemLiquidType` | integer | 所需的液体类型（-1 = 忽略） |
+| `itemHaveEnergy` | integer | 物品是否必须有能量（0 - 否，1 - 是） |
+
+### 合成后材料的变化
+
+| 参数 | 类型 | 描述 |
+|----------|-----|----------|
+| `itemDamageAfterCraft` | array[float] | 合成后对物品造成的伤害 [精确值，最小值，最大值]。如果第一个值是 0，则在最小值和最大值之间随机取值 |
+| `itemQuantityAfterCraft` | array[float] | 合成后内容物数量的变化 [精确值，最小值，最大值]。如果第一个值是 0，则在最小值和最大值之间随机取值 |
+| `itemDecraftCount` | float | 拆解时获得的物品数量 |
+| `itemDecraftHealth` | float | 拆解时物品的健康度 |
+| `itemQuantityEnergyDecreaseCoef` | float | 数量/能量减少系数 |
+| `itemDecraftFoodStage` | integer | 拆解时的食物阶段 |
+
+## 备注
+
+🛠 物品状态 (Health States)
+在材料参数 (itemHealth) 中可以指定物品的状态。
+| 值 | 常量 | 描述 |
+| -------- | ------------------------- | ---------------------------------------- |
+| `0` | **STATE_PRISTINE** | 完美状态（新物品）。 |
+| `1` | **STATE_WORN** | 磨损（略有使用痕迹，但状态良好）。 |
+| `2` | **STATE_DAMAGED** | 损坏（中等程度损坏）。 |
+| `3` | **STATE_BADLY_DAMAGED** | 严重损坏（几乎损坏）。 |
+| `4` | **STATE_RUINED** | 破损（无法使用）。 |
+
+📌 应用：
+在 needIngredients → itemHealth 中可以指定物品的最低要求状态。
+例如：3 – 甚至可以使用严重损坏的物品。
+
+---
+
+🥩 食物阶段 (FoodStage)
+在参数 foodStage 或 itemFoodStage 中可以指定食物的烹饪/状态阶段。
+| 值 | 名称 | 描述 |
+| -------- | ---------- | --------------------- |
+| `1` | **RAW** | 生的。 |
+| `2` | **BAKED** | 烘烤过的。 |
+| `3` | **BOILED** | 煮熟的。 |
+| `4` | **DRIED** | 风干/晒干的。 |
+| `5` | **BURNED** | 烧焦的。 |
+| `6` | **ROTTEN** | 腐烂的。 |
+
+
+- **包含 3 个元素的数组**：`[精确值，最小值，最大值]`
+  - 如果第一个值不等于 -1（或对于某些参数为 0），则使用精确值。
+  - 如果第一个值等于 -1（或 0），则在最小值和最大值之间使用随机值。
+- 值 `-1` 通常表示“忽略此参数”。
+- 颜色以带有前缀 `0xFF`（ARGB）的十六进制格式指定。
+- 对于布尔值，使用 `0`（假）和 `1`（真）。
